@@ -23,15 +23,10 @@ public class AlertState : IState
             case Enemy.EnemyClass.melee:
                 if (Vector3.Distance(enemy.transform.position, enemy.fieldOfView.player.position) <= enemy.agent.stoppingDistance)
                 {
-                    //enemy.meleeAttackZone.SetActive(true);
                     enemy.animator.Play("Attack");
                 }
                 else
                 {
-                    //if (enemy.meleeAttackZone.activeSelf is true)
-                    //{
-                    //    enemy.meleeAttackZone.SetActive(false);
-                    //}
                     if (!enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
                     {
                         enemy.agent.SetDestination(enemy.fieldOfView.player.transform.position);
@@ -48,10 +43,10 @@ public class AlertState : IState
                 {
                     enemy.agent.SetDestination(enemy.fieldOfView.player.position);
                 }
-                //if (enemy.stillRangeAttack == false)
-                //{
-                //    enemy.RangeAttackWait();
-                //}
+                if (enemy.stillRangeAttack == false && Vector3.Distance(enemy.transform.position, enemy.fieldOfView.player.position) < enemy.fieldOfView.range)
+                {
+                    enemy.RangeAttackWait();
+                }
                 break;
         }
     }

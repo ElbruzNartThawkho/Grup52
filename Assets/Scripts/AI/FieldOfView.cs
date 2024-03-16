@@ -13,7 +13,7 @@ public class FieldOfView : MonoBehaviour
     void Start()
     {
         enemy = GetComponent<Enemy>();
-        player = Movement.movement.transform;
+        player = Player.player.transform;
     }
 
     void Update()

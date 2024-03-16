@@ -8,11 +8,13 @@ public class Enemy : MonoBehaviour
     public EnemyClass type;
     public IState currentState;
     public float rangeAttackWaitTime;
+    public int damage;
 
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public FieldOfView fieldOfView;
     [HideInInspector] public Animator animator;
     [HideInInspector] public bool stillRangeAttack = false;
+
     private void Awake()
     {
         agent=GetComponent<NavMeshAgent>();
@@ -38,6 +40,13 @@ public class Enemy : MonoBehaviour
         currentState = newState;
         currentState.EnterState(this);
     }
+    public void MeleeAttack()
+    {
+        if (Vector3.Distance(transform.position, fieldOfView.player.position) <= agent.stoppingDistance)
+        {
+            Player.player.health.TakeDamage(damage);
+        }
+    }
     public void RangeAttackWait()
     {
         StartCoroutine(PreparationForFire(rangeAttackWaitTime));
@@ -49,22 +58,17 @@ public class Enemy : MonoBehaviour
         {
             i += 0.1f;
             yield return new WaitForSeconds(0.1f);
-            if (fieldOfView.isRed == false)
-            {
-                
-                break;
-            }
         }
-        if (fieldOfView.isRed == true)
-        {
-            animator.Play("Attack");
-            
-        }
+        animator.Play("Attack");
         stillRangeAttack = false;
     }
     public enum EnemyClass
     {
         melee = 0,
         ranger = 1,
+    }
+    public void Died()
+    {
+        Destroy(gameObject);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class BasicDamageAbility : Abilities
 {
     public GameObject effect;
-    public float damage;
+    public int damage;
 
     public override void UseAbility(Transform transform)
     {
@@ -13,7 +13,7 @@ public class BasicDamageAbility : Abilities
         {
             if (hit.collider.CompareTag("Enemy"))
             {
-                //düþmana hasar
+                hit.collider.GetComponent<Health>().TakeDamage(damage);
             }
             GameObject gameObject = Instantiate(effect, hit.point, effect.transform.rotation);
             Destroy(gameObject, 2);

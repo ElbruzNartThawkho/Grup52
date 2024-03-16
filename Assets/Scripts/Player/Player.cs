@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Movement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [HideInInspector] public PlayerInputs playerInputs;//oyuncu girdileri
+    [HideInInspector] public Health health;
 
     public Abilities[] abilities;
     int abilitiesIndex = 0;
@@ -17,11 +18,11 @@ public class Movement : MonoBehaviour
     float speed, velocityY;
     Vector3 velocity;//dikey hýz
 
-    public static Movement movement;//singleton
+    public static Player player;//singleton
 
     private void Awake()
     {
-        movement = this;//singleton
+        player = this;//singleton
         playerInputs = new PlayerInputs();//oyuncu girdileri için o sýnýftan nesne oluþturma
         SetPlayerInput(true);//oyuncu girdilerini aktif etme
     }
@@ -29,6 +30,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();//bileþen çekme
+        health = GetComponent<Health>();
         speed = walkSpeed;//hýz ayarlama
     }
 

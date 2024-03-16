@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StealHealPref : MonoBehaviour
 {
-    [SerializeField] float time, stealHeal;
+    [SerializeField] int time, stealHeal;
     List<Enemy> enemies = new List<Enemy>();
 
     void Start()
@@ -30,9 +30,12 @@ public class StealHealPref : MonoBehaviour
 
     void StealHeal()
     {
+        int heal = 0;
         foreach (Enemy enemy in enemies)
         {
-            //enemy damage
+            enemy.GetComponent<Health>().TakeDamage(stealHeal);
+            heal += stealHeal;
         }
+        Player.player.health.Heal(heal);
     }
 }
