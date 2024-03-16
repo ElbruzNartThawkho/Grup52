@@ -38,7 +38,6 @@ public class Health : MonoBehaviour
         else
         {
             ChangeHealth?.Invoke(currentHealth);
-            Debug.Log(gameObject.name);
         }
     }
 
@@ -47,25 +46,33 @@ public class Health : MonoBehaviour
         if (enemy != null)
         {
             enemy.animator.Play("Hit");
+            enemy.agent.SetDestination(enemy.transform.position);
+            Invoke(nameof(GoAgain), 0.5f);
         }
         else
         {
             //oyuncu için bir þey olacaksa
         }
     }
-
+    void GoAgain()
+    {
+        if (enemy != null && Player.player != null)
+        {
+            enemy.agent.SetDestination(Player.player.transform.position);
+        }
+    }
     void Die()
     {
         if(enemy != null)
         {
+            enemy.agent.SetDestination(enemy.transform.position);
             enemy.fieldOfView.enabled = false;
             enemy.ChangeState(new PatrolState());
-            enemy.agent.SetDestination(enemy.transform.position);
             enemy.animator.Play("Die");
         }
         else
         {
-            //gameover;
+            Player.player.gameObject.SetActive(false);
         }
     }
 

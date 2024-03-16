@@ -343,7 +343,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 6fd9ae34f9348e54a8319829eb575e39, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: c50c19854cb1181418ef51a92ad2d220, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &138639828
 Transform:
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: c4a1c74e35e03a74aad57cb186b1fd0d, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: bc9c94242ef98a649901fffa24251121, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &250600713
 GameObject:
@@ -2048,6 +2048,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1864435374}
+    - target: {fileID: 158820423878258534, guid: cfc0e2bccb78ce34e82278d2c07a5d86,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: SampleScene2
+      objectReference: {fileID: 0}
     - target: {fileID: 216051502879925357, guid: cfc0e2bccb78ce34e82278d2c07a5d86,
         type: 3}
       propertyPath: m_AnchorMax.x

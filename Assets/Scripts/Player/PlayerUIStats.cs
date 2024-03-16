@@ -34,5 +34,7 @@ public class PlayerUIStats : MonoBehaviour
     private void OnDisable()
     {
         Energy.ChangeEnergy -= Energy_ChangeEnergy;
+        Health.ChangeHealth -= Health_ChangeHealth;
+        Player.ChangeAbilities -= Player_ChangeAbilities;
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.InputSystem;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
 
     public static Player player;//singleton
     public static Action<int> ChangeAbilities;
+    public static Action GameOver;
     private void Awake()
     {
         player = this;//singleton
@@ -189,6 +191,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
+        GameOver?.Invoke();
         SetPlayerInput(false);
     }
 

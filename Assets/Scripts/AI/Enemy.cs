@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,6 +8,7 @@ public class Enemy : MonoBehaviour
     public EnemyClass type;
     public IState currentState;
     public GameObject rangerThrowablePref;
+    public static Action EnemyDied;
     public float rangeAttackWaitTime;
     public int damage;
 
@@ -72,6 +74,7 @@ public class Enemy : MonoBehaviour
     }
     public void Died()
     {
+        EnemyDied?.Invoke();
         Destroy(gameObject);
     }
 }
