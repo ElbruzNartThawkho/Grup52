@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     public EnemyClass type;
     public IState currentState;
+    public GameObject rangerThrowablePref;
     public float rangeAttackWaitTime;
     public int damage;
 
@@ -60,6 +60,9 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         animator.Play("Attack");
+        GameObject gameObject = Instantiate(rangerThrowablePref, transform.position + Vector3.up, rangerThrowablePref.transform.rotation);
+        gameObject.GetComponent<ThrowStats>().damage = damage;
+        gameObject.GetComponent<Rigidbody>().AddForce((transform.forward + Vector3.up * 0.1f) * 30, ForceMode.Impulse);
         stillRangeAttack = false;
     }
     public enum EnemyClass

@@ -1,12 +1,16 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Player : MonoBehaviour
 {
     [HideInInspector] public PlayerInputs playerInputs;//oyuncu girdileri
     [HideInInspector] public Health health;
+    [HideInInspector] public Energy energy;
 
     public Abilities[] abilities;
+    public int energyRegenerationAmount;
     int abilitiesIndex = 0;
 
     [SerializeField] Animator animator;//silah animator
@@ -19,7 +23,7 @@ public class Player : MonoBehaviour
     Vector3 velocity;//dikey hýz
 
     public static Player player;//singleton
-
+    public static Action<int> ChangeAbilities;
     private void Awake()
     {
         player = this;//singleton
@@ -31,6 +35,7 @@ public class Player : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();//bileþen çekme
         health = GetComponent<Health>();
+        energy = GetComponent<Energy>();
         speed = walkSpeed;//hýz ayarlama
     }
 
@@ -61,8 +66,12 @@ public class Player : MonoBehaviour
     {
         if (obj.performed)
         {
-            animator.Play("Shoot");
-            abilities[abilitiesIndex].UseAbility(Camera.main.transform);
+            if (abilities[abilitiesIndex].cost <= energy.GetCurrentEnergy())
+            {
+                energy.DecreaseEnergy(abilities[abilitiesIndex].cost);
+                animator.Play("Shoot");
+                abilities[abilitiesIndex].UseAbility(Camera.main.transform);
+            }
         }
     }
     /// <summary>
@@ -78,6 +87,25 @@ public class Player : MonoBehaviour
                 velocityY = 0;
                 velocityY += jumpPower;
             }
+        }
+    }
+    /// <summary>
+    /// skill deðiþtirme
+    /// </summary>
+    /// <param name="obj"></param>
+    void SkillChange(InputAction.CallbackContext obj)
+    {
+        if (obj.performed)
+        {
+            if (abilitiesIndex < abilities.Length - 1)
+            {
+                abilitiesIndex++;
+            }
+            else
+            {
+                abilitiesIndex = 0;
+            }
+            ChangeAbilities?.Invoke(abilitiesIndex);
         }
     }
     /// <summary>
@@ -111,7 +139,7 @@ public class Player : MonoBehaviour
         characterController.Move(v * speed * Time.deltaTime * transform.forward);
         characterController.Move(h * speed * Time.deltaTime * transform.right);
 
-        animator.SetFloat("Blend", Mathf.Clamp(Mathf.Sqrt(Mathf.Pow(h, 2) + Mathf.Pow(v, 2)), 0, 1));
+        animator.SetFloat("Blend", Mathf.Sqrt(Mathf.Pow(h, 2) + Mathf.Pow(v, 2)) * (speed > walkSpeed ? 2 : 1));
     }
     /// <summary>
     /// oyuncu girdilerini ayarlayan metot
@@ -127,9 +155,11 @@ public class Player : MonoBehaviour
             playerInputs.Player.Run.canceled += Run;
             playerInputs.Player.Shoot.performed += Shoot;
             playerInputs.Player.Jump.performed += Jump;
+            playerInputs.Player.SkillChange.performed += SkillChange;
         }
         else if (playerInputs.Player.enabled == true)
         {
+            playerInputs.Player.SkillChange.performed -= SkillChange;
             playerInputs.Player.Jump.performed -= Jump;
             playerInputs.Player.Shoot.performed -= Shoot;
             playerInputs.Player.Run.performed -= Run;

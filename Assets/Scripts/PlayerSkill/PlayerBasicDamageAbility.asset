@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc076df17f92c8f4b987ce314d45aa1e, type: 3}
   m_Name: PlayerBasicDamageAbility
   m_EditorClassIdentifier: 
+  cost: 10
   effect: {fileID: 5124843832850792970, guid: 80826a639bcaa0f4bb60c0f50f7bd678, type: 3}
   damage: 10

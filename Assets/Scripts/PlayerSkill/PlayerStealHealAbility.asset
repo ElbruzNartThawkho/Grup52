@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31a04911a236b6439671bdbba504008, type: 3}
   m_Name: PlayerStealHealAbility
   m_EditorClassIdentifier: 
-  effect: {fileID: 0}
-  steelHeal: 10
+  cost: 50
+  effect: {fileID: 8081482776556329939, guid: 3d5cf7c8b066c974584337d51a95c8bd, type: 3}

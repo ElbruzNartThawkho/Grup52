@@ -27,4 +27,8 @@ public class EffectAndSound : MonoBehaviour
     {
         audioSource.PlayOneShot(walkSound);
     }
+    public void ReloadEnergy()
+    {
+        Player.player.energy.IncreaseEnergy(Player.player.energyRegenerationAmount);
+    }
 }

@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
     public int maxHealth = 100;
     [HideInInspector] public int currentHealth;
     Enemy enemy;
+    public static Action<int> ChangeHealth;
     void Start()
     {
         currentHealth = maxHealth;
@@ -17,17 +18,6 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        if (enemy != null)
-        {
-            if(enemy.currentState is not AlertState)
-            {
-                enemy.ChangeState(new AlertState());
-            }
-        }
-        else
-        {
-
-        }
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
@@ -36,6 +26,19 @@ public class Health : MonoBehaviour
         else
         {
             Hit();
+        }
+
+        if (enemy != null)
+        {
+            if (enemy.currentState is not AlertState)
+            {
+                enemy.ChangeState(new AlertState());
+            }
+        }
+        else
+        {
+            ChangeHealth?.Invoke(currentHealth);
+            Debug.Log(gameObject.name);
         }
     }
 
@@ -73,6 +76,10 @@ public class Health : MonoBehaviour
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
+        }
+        if (enemy == null)
+        {
+            ChangeHealth?.Invoke(currentHealth);
         }
     }
 }
