@@ -1363,6 +1363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilities:
   - {fileID: 11400000, guid: 220664ad669f32447a331b968a8afe57, type: 2}
+  - {fileID: 11400000, guid: 7094e0d5aab37f34fa8241e8e6e55743, type: 2}
   animator: {fileID: 4476953259209319203}
   layer:
     serializedVersion: 2

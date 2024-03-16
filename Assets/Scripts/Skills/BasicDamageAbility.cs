@@ -1,10 +1,11 @@
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 [CreateAssetMenu(fileName = "BasicDamage", menuName = "Abilities/BasicDamage")]
 public class BasicDamageAbility : Abilities
 {
     public GameObject effect;
+    public float damage;
+
     public override void UseAbility(Transform transform)
     {
         RaycastHit hit;

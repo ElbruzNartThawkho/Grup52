@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PlayerBasicDamageAbility
   m_EditorClassIdentifier: 
   effect: {fileID: 5124843832850792970, guid: 80826a639bcaa0f4bb60c0f50f7bd678, type: 3}
+  damage: 10
