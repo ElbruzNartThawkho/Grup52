@@ -1773,8 +1773,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunSound: {fileID: 0}
   meleeAttackSound: {fileID: 0}
-  RangerAttackSound: {fileID: 0}
-  walkSound: {fileID: 0}
+  RangerAttackSound: {fileID: 8300000, guid: c41c15e4e789c1848bed27b0f6b9764c, type: 3}
+  walkSound: {fileID: 8300000, guid: 99315d16a255d71439511057721937fb, type: 3}
+  dieSound: {fileID: 8300000, guid: 4c29647b38e270648b40920013f398ed, type: 3}
   gunEffect: {fileID: 0}
   meleeAttackEfect: {fileID: 0}
   rangerAttackEffect: {fileID: 3554269438179160002}

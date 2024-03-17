@@ -520,9 +520,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunSound: {fileID: 0}
-  meleeAttackSound: {fileID: 0}
+  meleeAttackSound: {fileID: 8300000, guid: 0ba27255f8550a040af6dd5cf10acabb, type: 3}
   RangerAttackSound: {fileID: 0}
-  walkSound: {fileID: 0}
+  walkSound: {fileID: 8300000, guid: d245f9da824f18b4481ffffb20274418, type: 3}
+  dieSound: {fileID: 8300000, guid: 237e418c1ab20214ea7400181184fe29, type: 3}
   gunEffect: {fileID: 0}
   meleeAttackEfect: {fileID: 4480599341069778801}
   rangerAttackEffect: {fileID: 0}

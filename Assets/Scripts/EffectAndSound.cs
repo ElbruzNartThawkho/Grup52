@@ -1,7 +1,7 @@
 using UnityEngine;
 public class EffectAndSound : MonoBehaviour
 {
-    [SerializeField] AudioClip gunSound, meleeAttackSound, RangerAttackSound, walkSound; 
+    [SerializeField] AudioClip gunSound, meleeAttackSound, RangerAttackSound, walkSound, dieSound; 
     [SerializeField] ParticleSystem gunEffect,meleeAttackEfect,rangerAttackEffect;
     AudioSource audioSource;
     private void Awake()
@@ -30,5 +30,9 @@ public class EffectAndSound : MonoBehaviour
     public void ReloadEnergy()
     {
         Player.player.energy.IncreaseEnergy(Player.player.energyRegenerationAmount);
+    }
+    public void DieSound()
+    {
+        audioSource.PlayOneShot(dieSound);
     }
 }
