@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
     }
     public void MeleeAttack()
     {
-        if (Vector3.Distance(transform.position, fieldOfView.player.position) <= agent.stoppingDistance)
+        if (Vector3.Distance(transform.position, fieldOfView.player.position) <= agent.stoppingDistance + 0.2f)
         {
             Player.player.health.TakeDamage(damage);
         }

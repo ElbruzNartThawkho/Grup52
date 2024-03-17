@@ -189,8 +189,8 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
-  walkSpeed: 5
-  runSpeed: 10
+  walkSpeed: 4
+  runSpeed: 8
   jumpPower: 5
   gravity: 0.1
 --- !u!114 &1691769931253825763

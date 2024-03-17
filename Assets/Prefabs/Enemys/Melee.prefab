@@ -444,7 +444,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -487,7 +487,7 @@ MonoBehaviour:
   type: 0
   rangerThrowablePref: {fileID: 0}
   rangeAttackWaitTime: 6
-  damage: 1
+  damage: 5
   agent: {fileID: 0}
   fieldOfView: {fileID: 0}
   animator: {fileID: 0}
