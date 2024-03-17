@@ -2048,6 +2048,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1864435374}
+    - target: {fileID: 158820423878258534, guid: cfc0e2bccb78ce34e82278d2c07a5d86,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: SampleScene 1
+      objectReference: {fileID: 0}
     - target: {fileID: 216051502879925357, guid: cfc0e2bccb78ce34e82278d2c07a5d86,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2314,6 +2319,11 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 250600714}
+    - target: {fileID: 7021883833653665079, guid: d4f6530ea168277409b5c2883962f858,
+        type: 3}
+      propertyPath: energyRegenerationAmount
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
