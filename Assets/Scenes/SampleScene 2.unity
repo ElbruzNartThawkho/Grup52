@@ -2227,6 +2227,7 @@ MonoBehaviour:
   playerUI: {fileID: 7552772142730852484}
   gun: {fileID: 250600713}
   fpsCam: {fileID: 437575541}
+  remainEnemy: {fileID: 7552772142730852487}
 --- !u!4 &1864435375
 Transform:
   m_ObjectHideFlags: 0
@@ -3021,6 +3022,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7552772142730852483}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7552772142730852487 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8213508172487902372, guid: cfc0e2bccb78ce34e82278d2c07a5d86,
+    type: 3}
+  m_PrefabInstance: {fileID: 7552772142730852483}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9173411478938037412
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using Cinemachine;
 using System;
+using TMPro;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager;
 
     public GameObject finishScreen, gameOverScreen, gameOverCam, playerUI, gun, fpsCam;
+    public TextMeshProUGUI remainEnemy;
     int enemiesCount;
 
     private void Awake()
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
     private void Enemy_ChangeCount()
     {
         enemiesCount--;
+        remainEnemy.SetText("Remain" + enemiesCount);
         if (enemiesCount == 0)
         {
             fpsCam.GetComponent<CinemachineInputProvider>().enabled = false;
