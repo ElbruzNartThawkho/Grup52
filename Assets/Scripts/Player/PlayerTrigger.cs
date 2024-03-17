@@ -7,10 +7,22 @@ public class PlayerTrigger : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Enemy":
-                Player.player.health.TakeDamage(1);
+                
                 break;
             case "Throwable":
                 Player.player.health.TakeDamage(other.GetComponent<ThrowStats>().damage);
+                break;
+            default:
+
+                break;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Enemy":
+                Player.player.health.TakeDamage(2);
                 break;
             default:
 

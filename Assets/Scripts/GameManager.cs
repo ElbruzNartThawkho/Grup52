@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         enemiesCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        remainEnemy.SetText("Remain" + enemiesCount);
     }
     public void LoadLvl(string lvlName)
     {
